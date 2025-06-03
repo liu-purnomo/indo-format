@@ -1,6 +1,6 @@
 {
   "name": "indo-format",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Utility functions for Indonesian-specific formatting: Rupiah, NIK, tanggal, dan terbilang.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
