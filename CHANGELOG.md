@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/liu-purnomo/indo-format/compare/v0.3.0...v0.3.1) (2025-06-03)
+
 ## [0.2.0](https://github.com/liu-purnomo/indo-format/compare/v0.1.8...v0.2.0) (2025-06-03)
 
 ### [0.1.8](https://github.com/liu-purnomo/indo-format/compare/v0.1.7...v0.1.8) (2025-06-03)
