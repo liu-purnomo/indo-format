@@ -4,6 +4,10 @@
   "description": "Utility functions for Indonesian-specific formatting: Rupiah, NIK, tanggal, dan terbilang.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "data/libur"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
@@ -18,7 +22,11 @@
     "indonesia",
     "utility"
   ],
-  "author": "Liu Purnomo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liu-purnomo/indo-format.git"
+  },
+  "author": "liupurnomo.com <hi@liupurnomo>",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^5.0.0",
