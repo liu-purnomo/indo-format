@@ -1,0 +1,27 @@
+{
+  "name": "indo-format",
+  "version": "0.1.0",
+  "description": "Utility functions for Indonesian-specific formatting: Rupiah, NIK, tanggal, dan terbilang.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "test": "vitest"
+  },
+  "keywords": [
+    "rupiah",
+    "terbilang",
+    "nik",
+    "tanggal",
+    "format",
+    "indonesia",
+    "utility"
+  ],
+  "author": "Liu Purnomo",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^1.6.1"
+  }
+}
