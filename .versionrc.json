@@ -1,0 +1,14 @@
+{
+  "types": [
+    { "type": "feat", "section": "✨ Fitur Baru" },
+    { "type": "fix", "section": "🐛 Perbaikan" },
+    { "type": "chore", "section": "🔧 Perubahan Internal" },
+    { "type": "docs", "section": "📝 Dokumentasi" },
+    { "type": "refactor", "section": "🧠 Refactor" },
+    { "type": "test", "section": "✅ Pengujian" },
+    { "type": "style", "section": "🎨 Styling" }
+  ],
+  "commitUrlFormat": "https://github.com/liu-purnomo/indo-format/commit/{{hash}}",
+  "issueUrlFormat": "https://github.com/liu-purnomo/indo-format/issues/{{id}}",
+  "compareUrlFormat": "https://github.com/liu-purnomo/indo-format/compare/{{previousTag}}...{{currentTag}}"
+}
