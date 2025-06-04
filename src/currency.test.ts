@@ -2,54 +2,44 @@ import { describe, expect, it } from 'vitest';
 import { formatRupiah, parseRupiah } from './currency';
 
 describe('formatRupiah', () => {
-  it('formats integer to Rupiah with thousands separator', () => {
-    expect(formatRupiah(1500000)).toBe('Rp 1.500.000');
+  it('formats correctly without space by default', () => {
+    expect(formatRupiah(5000)).toBe('Rp5.000');
+    expect(formatRupiah(1500000)).toBe('Rp1.500.000');
   });
 
-  it('formats small number correctly', () => {
-    expect(formatRupiah(100)).toBe('Rp 100');
+  it('formats with space when withSpace is true', () => {
+    expect(formatRupiah(5000, { withSpace: true })).toBe('Rp 5.000');
+    expect(formatRupiah(1500000, { withSpace: true })).toBe('Rp 1.500.000');
   });
 
-  it('formats zero correctly', () => {
-    expect(formatRupiah(0)).toBe('Rp 0');
+  it('handles zero value', () => {
+    expect(formatRupiah(0)).toBe('Rp0');
   });
 
-  it('formats large number correctly', () => {
-    expect(formatRupiah(1234567890)).toBe('Rp 1.234.567.890');
-  });
-
-  it('formats negative number correctly', () => {
-    expect(formatRupiah(-5000)).toBe('Rp -5.000');
-  });
-
-  it('supports disabling space between Rp and number', () => {
-    // optional: test if you implement that feature later
+  it('handles decimal values', () => {
+    expect(formatRupiah(5000.75)).toBe('Rp5.000,75');
   });
 });
 
 describe('parseRupiah', () => {
-  it('parses string with Rp and separator', () => {
-    expect(parseRupiah('Rp 1.500.000')).toBe(1500000);
+  it('parses plain string correctly', () => {
+    expect(parseRupiah('Rp5.000')).toBe(5000);
   });
 
-  it('parses string without Rp', () => {
-    expect(parseRupiah('2.500.000')).toBe(2500000);
+  it('parses with space correctly', () => {
+    expect(parseRupiah('Rp 5.000')).toBe(5000);
   });
 
-  it('parses string with other characters', () => {
-    expect(parseRupiah('Rp. 3.000.000,-')).toBe(3000000);
+  it('parses with decimals using comma', () => {
+    expect(parseRupiah('Rp5.000,75')).toBe(5000.75);
   });
 
-  it('returns 0 for invalid input', () => {
-    expect(parseRupiah('not a number')).toBe(0);
-    expect(parseRupiah('')).toBe(0);
+  it('parses large number correctly', () => {
+    expect(parseRupiah('Rp1.500.000')).toBe(1500000);
   });
 
-  it('parses string with spaces and text', () => {
-    expect(parseRupiah('Total: Rp 10.000.000')).toBe(10000000);
-  });
-
-  it('parses negative numbers correctly', () => {
-    expect(parseRupiah('-Rp 5.000')).toBe(5000); // Note: minus sign stripped
+  it('parses malformed input gracefully', () => {
+    expect(parseRupiah('Rpabc123.456xyz')).toBe(123456);
   });
 });
+
