@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/liu-purnomo/indo-format/compare/v0.3.1...v0.3.2) (2025-06-04)
+
+
+### 🐛 Perbaikan
+
+* **currency:** remove space after Rp by default, add option to keep it ([23b4b6b](https://github.com/liu-purnomo/indo-format/commit/23b4b6be9fbba9d75d45e96fa5f8bd124c6be862))
+
+
+### 📝 Dokumentasi
+
+* **currency:** update README and add test for formatRupiah/parseRupiah ([456c6cc](https://github.com/liu-purnomo/indo-format/commit/456c6ccf6386201cd7ad5587aafd9efb2310be16))
+
 ### [0.3.1](https://github.com/liu-purnomo/indo-format/compare/v0.3.0...v0.3.1) (2025-06-03)
 
 ## [0.2.0](https://github.com/liu-purnomo/indo-format/compare/v0.1.8...v0.2.0) (2025-06-03)
