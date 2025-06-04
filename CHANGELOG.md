@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/liu-purnomo/indo-format/compare/v0.3.2...v1.0.0) (2025-06-04)
+
+
+### 🐛 Perbaikan
+
+* **build:** use CommonJS to avoid .js extension issues in Node environments ([b7ce951](https://github.com/liu-purnomo/indo-format/commit/b7ce951ed25244f8b0f9ed3e2ed0d0e2176a9b37))
+
+
+### ✅ Pengujian
+
+* add local example usage for manual verification ([4b1d1c0](https://github.com/liu-purnomo/indo-format/commit/4b1d1c0c11a24c37ee42619e2b6c56c3b007670c))
+
 ### [0.3.2](https://github.com/liu-purnomo/indo-format/compare/v0.3.1...v0.3.2) (2025-06-04)
 
 
