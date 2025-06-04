@@ -47,86 +47,80 @@ Berikut adalah **Table of Contents (ToC)** yang cocok untuk README tersebut. Bis
 
 ---
 
-## ✍️ Contoh Penggunaan
+## 💰 Currency Utilities
 
-### 💰 Currency
+### ✅ `formatRupiah(value: number, options?: { withSpace?: boolean }): string`
 
-Berikut adalah deskripsi mendalam untuk fungsi `formatRupiah` dan `parseRupiah` dari library `indo-format`, lengkap dengan penjelasan teknis dan contoh penggunaannya:
-
----
-
-## 💰 `formatRupiah()` dan `parseRupiah()`
-
-### 📖 Deskripsi
-
-Fungsi `formatRupiah` dan `parseRupiah` adalah utilitas sederhana namun penting dalam aplikasi yang menangani data keuangan di Indonesia. Keduanya dirancang untuk mengonversi antara angka dan format mata uang Rupiah sesuai standar lokal (`id-ID`).
-
----
-
-### ✅ `formatRupiah(num: number): string`
-
-Mengubah angka menjadi string mata uang Rupiah dengan format lokal Indonesia, lengkap dengan titik sebagai pemisah ribuan.
+Mengubah angka menjadi string mata uang Rupiah sesuai format lokal Indonesia (`id-ID`), dengan opsi untuk menyisipkan spasi antara `"Rp"` dan angkanya.
 
 #### 🔧 Implementasi:
 
 ```ts
-export function formatRupiah(num: number): string {
-  return 'Rp ' + num.toLocaleString('id-ID');
+export function formatRupiah(
+  value: number,
+  options?: { withSpace?: boolean }
+): string {
+  const num = Number(value);
+  const space = options?.withSpace ? ' ' : '';
+  return 'Rp' + space + num.toLocaleString('id-ID');
 }
 ```
 
 #### 📦 Contoh Penggunaan:
 
 ```ts
-formatRupiah(1000);         // "Rp 1.000"
-formatRupiah(25000000.5);   // "Rp 25.000.000"
+formatRupiah(1000);                       // "Rp1.000"
+formatRupiah(25000000.5);                // "Rp25.000.000,5"
+formatRupiah(1000, { withSpace: true }); // "Rp 1.000"
 ```
 
 #### 📌 Catatan:
 
-* Fungsi ini **tidak menampilkan desimal**, karena standar umum di Indonesia adalah membulatkan Rupiah ke bilangan bulat.
-* Untuk kebutuhan spesifik dengan desimal (misal: `Rp 1.000,50`), bisa dikembangkan opsi tambahan nanti.
+* **Default-nya tanpa spasi** (`"Rp1.000"`) sesuai dengan Pedoman Umum Ejaan Bahasa Indonesia (PUEBI).
+* Gunakan `withSpace: true` jika tampilan antarmuka memerlukan `"Rp 1.000"`.
 
 ---
 
 ### ✅ `parseRupiah(str: string): number`
 
-Mengubah string dalam format Rupiah menjadi angka biasa (`number`) dengan menghapus semua karakter non-digit.
+Mengubah string dalam format Rupiah (misal: `"Rp25.000,75"`) menjadi angka (`number`), menangani pemisah ribuan dan desimal (koma).
 
 #### 🔧 Implementasi:
 
 ```ts
 export function parseRupiah(str: string): number {
-  return Number(str.replace(/[^0-9]/g, ''));
+  const cleaned = str.replace(/[^0-9,]/g, '').replace(',', '.');
+  return Number(cleaned);
 }
 ```
 
 #### 📦 Contoh Penggunaan:
 
 ```ts
-parseRupiah('Rp 25.000.000');     // 25000000
-parseRupiah('Rp1.000.000');       // 1000000
-parseRupiah('2.500.000');         // 2500000
+parseRupiah('Rp25.000.000');     // 25000000
+parseRupiah('Rp 5.000,50');      // 5000.5
+parseRupiah('1.000.000');        // 1000000
+parseRupiah('Rpabc123.456xyz');  // 123456
 ```
 
 #### 📌 Catatan:
 
-* Fungsi ini **menghapus semua karakter kecuali angka**, jadi fleksibel untuk input dengan format bervariasi.
-* Cocok digunakan untuk parsing input dari form pengguna, termasuk yang diketik manual atau hasil copy-paste dari bank statement.
+* Cocok untuk parsing input dari form pengguna, termasuk hasil salinan dari e-wallet atau bank statement.
+* Format desimal dengan koma (`','`) otomatis diubah menjadi titik (`'.'`).
 
 ---
 
 ### 🧠 Use Case Umum
 
 * Menampilkan harga produk di e-commerce
-* Parsing input form pembayaran
+* Parsing input dari form pembayaran
 * Membaca data keuangan dari spreadsheet
-* Validasi input pajak, gaji, atau invoice
-* Format saldo dompet digital atau transfer bank
+* Validasi nominal pajak, gaji, atau invoice
+* Format saldo dompet digital atau transaksi bank
 
 ---
 
-### 📦 Bonus: Gunakan dengan React/Next.js
+### 📦 Contoh Integrasi di React/Next.js
 
 ```tsx
 <span>{formatRupiah(250000)}</span>
